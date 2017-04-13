@@ -1,0 +1,29 @@
+{
+  "name": "mixathome",
+  "version": "0.0.1",
+  "description": "Mix at home app",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "https://github.com/mixathome/mixathome",
+  "author": "Ilya Korchenov",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "~1.6.2",
+    "electron-builder": "^16.8.2"
+  },
+  "dependencies": {
+    "electron-log": "^1.3.0",
+    "electron-updater": "^1.11.2"
+  },
+  "build": {
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "mixathome",
+        "repo": "mixathome"
+      }
+    ]
+  }
+}
