@@ -1,4 +1,4 @@
-const {app, BrowserWindow} = require('electron');
+const {app, BrowserWindow, globalShortcut} = require('electron');
 const {autoUpdater} = require("electron-updater");
 const url = require('url');
 const path = require('path');
@@ -43,5 +43,13 @@ autoUpdater.on('update-downloaded', () => {
 });
 
 app.on('ready', function () {
+    globalShortcut.register('Alt+F4', () => {
+        app.quit();
+    });
+
     autoUpdater.checkForUpdates();
+});
+
+app.on('will-quit', () => {
+    globalShortcut.unregisterAll()
 });
