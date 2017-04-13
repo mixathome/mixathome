@@ -4,7 +4,8 @@
   "description": "Mix at home app",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "build": "build"
   },
   "repository": "https://github.com/mixathome/mixathome",
   "author": "Ilya Korchenov",
