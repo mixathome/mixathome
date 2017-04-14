@@ -1,4 +1,4 @@
-const {app, BrowserWindow, globalShortcut} = require('electron');
+const {app, BrowserWindow, globalShortcut, dialog} = require('electron');
 const {autoUpdater} = require("electron-updater");
 const url = require('url');
 const path = require('path');
@@ -7,6 +7,10 @@ const log = require('electron-log');
 autoUpdater.logger = log;
 autoUpdater.logger.transports.file.level = 'info';
 log.info('App starting...');
+
+dialog.showErrorBox = function(title, content) {
+    console.log(`${title}\n${content}`);
+};
 
 let 
     win,
