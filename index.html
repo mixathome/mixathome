@@ -13,6 +13,8 @@
     </div>
     <script type="text/javascript">
     	require("electron").webFrame.setZoomLevelLimits(1, 1);
+
+		const processLang = process && process.env ? /(uk|pl)/.test(process.env.MIX_LANG) ? process.env.MIX_LANG : 'ru' : ''
     </script>
     <script src="js/bundle.js"></script>
 </body>
