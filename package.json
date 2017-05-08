@@ -1,6 +1,6 @@
 {
   "name": "mixathome",
-  "version": "0.0.29",
+  "version": "1.0.2",
   "description": "Mix at home app",
   "main": "main.js",
   "scripts": {

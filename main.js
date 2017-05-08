@@ -8,13 +8,19 @@ autoUpdater.logger = log;
 autoUpdater.logger.transports.file.level = 'info';
 log.info('App starting...');
 
-dialog.showErrorBox = function(title, content) {
-    console.log(`${title}\n${content}`);
-};
-
 let 
     win,
     interval;
+	
+dialog.showErrorBox = function(title, content) {
+    console.log(`${title}\n${content}`);
+	
+    clearInterval(interval);
+
+    interval = setInterval(() => {
+        autoUpdater.checkForUpdates();
+    }, 60000);	
+};
 
 function createDefaultWindow() {
     win = new BrowserWindow({
@@ -56,6 +62,8 @@ app.on('ready', function () {
     globalShortcut.register('Alt+F4', () => {
         app.quit();
     });
+	
+    clearInterval(interval);
 
     interval = setInterval(() => {
         autoUpdater.checkForUpdates();
