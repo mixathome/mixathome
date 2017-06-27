@@ -2,6 +2,7 @@ const {app, BrowserWindow, globalShortcut, dialog} = require('electron');
 const {autoUpdater} = require("electron-updater");
 const url = require('url');
 const path = require('path');
+const express = require('express');
 const log = require('electron-log');
 
 autoUpdater.logger = log;
@@ -33,9 +34,19 @@ function createDefaultWindow() {
         win = null;
     });
 
+    const server = express();
+
+    server.get('/', (req, res) => {
+        res.sendFile(path.join(__dirname, 'index.html'));
+    });
+
+    server.use(express.static(path.join(__dirname, '.')));
+
+    server.listen(8080);
+
     win.loadURL(url.format({
-        pathname: path.join(__dirname, 'index.html'),
-        protocol: 'file:',
+        pathname: 'localhost:8080',
+        protocol: 'http:',
         slashes: true
     }));
 
